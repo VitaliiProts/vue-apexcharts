@@ -11,17 +11,93 @@ export default {
   data() {
     return {
       options: {
-        chart: {
-          id: 'vuechart-example'
-        },
+        // кастомізація даних по X
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-        }
+        categories: [123, 234, 345, 567, 678],
+        labels: {
+            show: true,
+            rotate: -45,
+            rotateAlways: false,
+            hideOverlappingLabels: false, // ця опція запобігає накладанню лейблів (коли лейбл дуже близько один до одного)
+            trim: true,
+            minHeight: undefined,
+            maxHeight: 150,
+            style: {
+                colors: [],
+                fontSize: '12px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                cssClass: 'apexcharts-xaxis-label',
+            },
+            offsetX: 0,
+            offsetY: 0,
+            format: undefined, // для дати (https://apexcharts.com/docs/datetime/)
+            formatter: (e) => {
+              return e + '%';
+            },
+        },
+        axisTicks: {
+            show: true,
+            borderType: 'solid',
+            color: '#78909C',
+            height: 6,
+            offsetX: 0,
+            offsetY: 0
+        },
+        position: 'bottom',
+        title: {
+            text: 'This is some title',
+            offsetX: 0,
+            offsetY: 0,
+            style: {
+                color: [],
+                fontSize: '24px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                cssClass: 'apexcharts-xaxis-title',
+            },
+        },
+        // При наведенні на чарт
+        crosshairs: {
+            show: false,
+            width: 12,
+            position: 'back',
+            opacity: 0.9,        
+            stroke: {
+                color: '#b6b6b6',
+                width: 0,
+                dashArray: 0,
+            },
+            fill: {
+                type: 'solid',
+                color: '#B1B9C4',
+                gradient: {
+                    colorFrom: '#D8E3F0',
+                    colorTo: '#BED1E6',
+                    stops: [0, 100],
+                    opacityFrom: 0.4,
+                    opacityTo: 0.5,
+                },
+            },
+            dropShadow: {
+                enabled: false,
+                top: 0,
+                left: 0,
+                blur: 1,
+                opacity: 0.4,
+            },
+        },
+        tooltip: {
+            enabled: true,
+            formatter: undefined,
+            offsetY: 0,
+        },
+    }
       },
-      series: [{
-        name: 'series-1',
-        data: [30, 40, 45, 50, 49, 60, 70, 91]
-      }]
+      series: [
+        {
+          name: 'series-1',
+          data: [30, 40, 45, 50, 49]
+        },
+      ]
     };
   },
   components: { VueApexCharts },
