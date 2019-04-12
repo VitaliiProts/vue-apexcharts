@@ -11,9 +11,30 @@ export default {
   data() {
     return {
       options: {
+        // Параметри самих колонок
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '20%',
+            endingShape: 'rounded',
+            colors: {
+            ranges: [{
+                from: 0,
+                to: 0,
+                color: undefined
+            }],
+            backgroundBarColors: ['#666'],
+            backgroundBarOpacity: 0.3,
+            },
+            dataLabels: {
+            position: 'left',
+            }
+          },
+        },
         // кастомізація даних по X
         xaxis: {
         categories: [123, 234, 345, 567, 678],
+        maxWidth: 200,
         labels: {
             show: true,
             rotate: -45,
@@ -86,7 +107,7 @@ export default {
             },
         },
         tooltip: {
-            enabled: true,
+            enabled: false,
             formatter: undefined,
             offsetY: 0,
         },
